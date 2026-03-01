@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!--
+    *  Author: Olivia Haag
+    *  Date: 11/5/24
+    *  Assignment: Final Project - The Athlete's Den
+    *  Purpose:
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width= device-width, inital-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- linking to main stylesheet -->
+    <link rel="stylesheet" href="stylesheet.css" />
+    <title>The Athlete's Den :: Schedule a Lesson Today!</title>
+  </head>
+  <body>
+
+    <div id="wrapper">
+
+      <header>
+        <!-- heading 1 always goes in the header to tell search engines what the main
+      topic of the page is -->
+        <h1><a href="home.html">The Athlete's Den</a></h1>
+      </header>
+  
+      <nav>
+        <!-- creating links at top of page -->
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li><a href="coaches.html">Coaches</a></li>
+          <li><a href="mental.html">Mentality</a></li>
+          <li><a href="nutrition.html">Nutrition</a></li>
+          <li><a href="reservations.html">Reservations</a></li>
+        </ul>
+      </nav>
+
+    <main>
+      <h2>Training with the Den</h2>
+      <h3>Contact Us Today!</h3>
+      <p>Required fields are marked with an asterisk*</p>
+      <form id="reservationForm">
+        
+        <!-- First Name input -->
+        <label for="firstName">*First Name:</label>
+        <input type="text" name="firstName" id="firstName" required="required"></input>
+      
+        <!-- Last Name input -->
+        <label for="lasttName">*Last Name:</label>
+        <input type="text" name="lastName" id="lastName" required="required"></input>
+
+        <!-- Email input -->
+        <label for="email">*Email:</label>
+        <input type="text" name="email" id="email" required="required"></input>
+
+        <!-- Phone input -->
+        <label for="phone">Phone:</label>
+        <input type="phone" name="phone" id="phone" maxlength="12"></input>
+
+        <!-- Day of Lesson input -->
+        <label for="date">Day of Lesson:</label>
+        <input type="date" name="date" id="date"></input>
+
+        <!-- Session input -->
+        <label for="sessions">Sessions:</label>
+        <input type="number" name="sessions" id="sessions" man="1" max="14"></input>
+
+        <!-- Sport & Skill input -->
+        <label for="text">*Sport & Skill:</label>
+        <textarea name="sportskill" rows="8" cols="30" value="Submit"></textarea>
+
+        <!-- Submit input -->
+        <input type="submit" name="submit" id="submit"></input>
+      </form>
+
+      <!-- start contact area -->
+      <div id="contact">
+        <span class="resort">The Athlete's Den</span> <br />
+        210 Athlete's Street <br />
+        Buford, GA 30515 <br /><br />
+        888-555-5555 <br /><br />
+      </div>
+    </main>
+
+    <footer>
+      
+        Copyright &copy; 2024 The Athlete's Den <br />
+        <a href="mailto:o162509haag@mail.swu.edu">o162509haag@mail.swu.edu</a>
+      
+    </footer>
+  </div>
+  <script src="script.js"></script>
+  </body>
+</html>
