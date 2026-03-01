@@ -1,0 +1,409 @@
+/*  Author: Olivia Haag
+ *  Date: 2/19/26
+ *  Class: Rize - Software Development
+ *  Purpose:Assignment: Assign. 7 - SkillSwap Stylesheet
+ */
+
+/* universal style */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* global styles*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+#wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* header begins */
+header {
+  background-color: #1e2a38;
+  padding: 20px 20px 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+header h1 a:hover {
+  color: #f0c040;
+}
+
+/* navigation begins */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 5px;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  display: block;
+  padding: 14px 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  background-color: #f0c040;
+  color: #1e2a38;
+}
+
+/* .classes and #ids */
+.hero {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+#homehero {
+  background-image: url("hero.jpg"); /* replace with your image */
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.2s ease;
+}
+
+.card.expanded {
+    transform: scale(1.05);
+    background-color: #fffee6;
+}
+
+#filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0 30px 0;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  background-color: #1e2a38;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.filter-btn:hover {
+  background-color: #f0c040;
+  color: #1e2a38;
+  transform: translateY(-2px);
+}
+
+#cost-calculator {
+  flex: 1 1 45%;
+  max-width: 500px;
+  /*margin: 30px auto;*/
+  padding: 20px;
+  background-color: #f0c040;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#cost-calculator button {
+  padding: 10px 20px;
+  background-color: #1e2a38;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#cost-calculator button:hover {
+  background-color: #2b3c51;
+}
+
+#cost-calculator input {
+  padding: 8px;
+  margin: 5px 0 10px 0;
+  width: 62%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.result-box {
+  min-height: 36px;
+  margin-top: 15px;
+  margin-left: 125px;
+  margin-right: 125px;
+  padding: 5px;
+  background-color: #ffffff;
+  color: #1e2a38;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#user-needs {
+  flex: 1 1 45%;
+  max-width: 500px;
+  /*margin: 30px auto;*/
+  padding: 20px;
+  background-color: #f0c040;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#user-needs input {
+  padding: 8px;
+  margin: 5px 0 10px 0;
+  width: 80%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#user-needs button {
+  padding: 10px 20px;
+  background-color: #1e2a38;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#user-needs button:hover {
+  background-color: #2b3c51;
+}
+
+.matched-skills-container {
+  min-height: 36px;
+  margin-top: 15px;
+  margin-left: 125px;
+  margin-right: 125px;
+  padding: 5px;
+  background-color: #ffffff;
+  color: #1e2a38;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#tools-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 30px 20px;
+  background-color: #f4f6f8;
+}
+
+.add-skill-section {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f0c040;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#add-skill-section input, #add-skill-section textarea,
+#add-skill-section select {
+  padding: 12px 14px;
+  margin: 5px 0 10px 0;
+  width: 95%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1.1rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: #fffbe6;
+}
+
+#add-skill-form textarea {
+  min-height: 30px;
+  resize: vertical;
+  padding-top: 8px;
+  line-height: 1.4;
+}
+
+#add-skill-form button {
+  padding: 10px 20px;
+  background-color: #1e2a38;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#add-skill-form button:hover {
+  background-color: #2b3c51;
+}
+
+/* Medium Layout */
+main h2 {
+  color: #1e2a38;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  text-align: center;
+  background-color: #f0c040;
+}
+
+main h3 {
+  text-align: center;
+  font-size: larger;
+}
+
+main h4 {
+  color: #2f4054;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 25px;
+  font-size: 1.8rem;
+}
+
+main p {
+  margin-bottom: 15px;;
+}
+
+.den {
+  font-weight: bold;
+  color: #2f4054;
+}
+
+#contact {
+  font-size: 90%;
+}
+
+#homehero {
+  background-image: url(hero.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+main ul {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+main li {
+  margin-bottom: 10px;
+}
+
+main div:not(.card-container):not(.card):not(.hero) {
+  padding: 10px;
+  background-color: #f0c040;
+  color: #1e2a38;
+  text-align: center;
+  font-size: medium;
+  /*border-left: 5px solid #f0c040;*/
+}
+
+footer {
+  padding: 2em;
+  background-color: #1e2a38;
+  color: #ffffff;
+  font-size: 75%;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  text-align: center;
+}
+
+footer a {
+  color: #f0c040;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* creating a 3 column layout for the FAQ */
+.flow {
+display: flex;
+flex-direction: row;
+}
+
+/* responsive design */
+@media (max-width: 768px) {
+header {
+  flex-direction: column;
+  align-items: center;
+}
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero {
+    height: 200px;
+  }
+  
+  .video-section {
+    flex-direction: column;
+  }
+  
+  .video-section video {
+    max-width: 100%;
+  }
+
+}
