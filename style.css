@@ -363,26 +363,7 @@ video {
   border-radius: 4px;
 }
 
-/*.video-section {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.video-section ul {
-  flex: 1;
-  padding-left: 20px;
-}
-
-.video-section video {
-  max-width: 320px;
-  border-radius: 4px;
-  flex-shrink: 0;
-}*/
-
-main div:not(.card-container):not(.card):not(.hero):not(.content-row) {
+main div:not(.card-container):not(.card):not(.hero):not(.content-row):not(.reservations) {
   padding: 10px;
   background-color: #f0c040;
   color: #1e2a38;
@@ -461,6 +442,26 @@ body.profile-page h2.profile-title {
   font-weight: bold;
   color: #ffffff;
   background-color: #1e2a38;
+}
+
+/* reservations form begins */
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 10px 30px 30px 30px;
+}
+
+input, textarea {
+  margin-bottom: .5em;
+}
+
+dt {
+  color: #2f4054;
+}
+
+.reservations h3 {
+  text-align: left;
+  margin-left: 12px;
 }
 
 /* responsive design */
