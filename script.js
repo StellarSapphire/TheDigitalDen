@@ -74,40 +74,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Script for signup and profile pages; I utilized AI to assist in the development of this code
 document.addEventListener("DOMContentLoaded", function () {
-    const signupForm = document.getElementById('signupForm');
-    if (signupForm) {
-        signupForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value.trim();
-            const role = document.getElementById('role').value;
+  const signupForm = document.getElementById('signupForm');
+  if (signupForm) {
+    signupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-            if (!name || !email || !password || !role) {
-            alert('Please fill out all fields.');
-            return;
-            }
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const role = document.getElementById('role').value;
 
-            // Save user info in localStorage
-            const user = { name, email, role };
-            localStorage.setItem('currentUser', JSON.stringify(user));
+      if (!name || !email || !password || !role) {
+        alert('Please fill out all fields.');
+        return;
+      }
 
-            // Redirect to profile page
-            window.location.href = 'profile.html';
-        });
-    }
+      // Send user data to backend
+      fetch("http://localhost:5000/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password, role })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+
+        if (data.message === "Account created successfully!") {
+          // Optionally store minimal info locally for profile page
+          localStorage.setItem("currentUser", JSON.stringify({ name, email, role }));
+          window.location.href = "profile.html"; // redirect after signup
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Error creating account. Try again.");
+      });
+    });
+  }
 });
 
 // On profile page load, display user information
 if (document.getElementById('profileName')) {
-    const userData = JSON.parse(localStorage.getItem('currentUser'));
+  const userData = JSON.parse(localStorage.getItem('currentUser'));
 
-    if (userData) {
-        document.getElementById('profileName').textContent = userData.name;
-        document.getElementById('profileEmail').textContent = userData.email;
-        document.getElementById('profileRole').textContent = userData.role;
-    } else {
-        // If no user is found, redirect to signup page
-        window.location.href = 'login.html';
-    }
+  if (userData) {
+    document.getElementById('profileName').textContent = userData.name;
+    document.getElementById('profileEmail').textContent = userData.email;
+    document.getElementById('profileRole').textContent = userData.role;
+  } else {
+    // Redirect to signup/login if no user found
+    window.location.href = 'login.html';
+  }
 }
