@@ -1,0 +1,23 @@
+{
+  "name": "thedigitalden",
+  "version": "1.0.0",
+  "description": "Website with online sources and reservation capabilities for The Athlete's Den\r /*****/\r Created and updated the index page and .css\r /*****/\r Before the final submission the color scheme for the index page will be adjusted and the\r .css for the other pages will be updated\r /*****/\r Created user profile page and added .css, need to add more content and JS to update profile info\r /*****/\r Created reservation page and added .css, also added JS attributes\r /*****/\r Created login page that currently functions as the account creation page\r /*****/\r Added JS that allows form submission and redirects user to profile page with saved account information",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StellarSapphire/TheDigitalDen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StellarSapphire/TheDigitalDen/issues"
+  },
+  "homepage": "https://github.com/StellarSapphire/TheDigitalDen#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
