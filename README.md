@@ -10,3 +10,6 @@ Created user profile page and added .css, need to add more content and JS to upd
 /*****/
 Created reservation page and added .css, also added JS attributes
 /*****/
+Created login page that currently functions as the account creation page
+/*****/
+Added JS that allows form submission and redirects user to profile page with saved account information
