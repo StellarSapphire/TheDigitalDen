@@ -60,3 +60,43 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", handleFormSubmit);
   emailInput.addEventListener("input", validateEmailOnInput);
 });
+
+// Script for signup and profile pages; I utilized AI to assist in the development of this code
+document.addEventListener("DOMContentLoaded", function () {
+    const signupForm = document.getElementById('signupForm');
+    if (signupForm) {
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const role = document.getElementById('role').value;
+
+            if (!name || !email || !password || !role) {
+            alert('Please fill out all fields.');
+            return;
+            }
+
+            // Save user info in localStorage
+            const user = { name, email, role };
+            localStorage.setItem('currentUser', JSON.stringify(user));
+
+            // Redirect to profile page
+            window.location.href = 'profile.html';
+        });
+    }
+});
+
+// On profile page load, display user information
+if (document.getElementById('profileName')) {
+    const userData = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (userData) {
+        document.getElementById('profileName').textContent = userData.name;
+        document.getElementById('profileEmail').textContent = userData.email;
+        document.getElementById('profileRole').textContent = userData.role;
+    } else {
+        // If no user is found, redirect to signup page
+        window.location.href = 'login.html';
+    }
+}
