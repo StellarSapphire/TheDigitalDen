@@ -72,13 +72,35 @@ nav a:hover {
 
 /* .classes and #ids */
 .hero {
+  width: 100%;
   height: 250px;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 #homehero {
-  background-image: url("hero.jpg"); /* replace with your image */
+  background-image: url(facility.png);
+}
+
+.content-row {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-right: 15px;
+}
+
+.content-row video {
+  max-width: 100%;
+  height: auto;
+  margin-left: 25px;
+}
+
+.content-row ul {
+  flex: 1;
+  margin: 0;
+  padding-left: 20px;
 }
 
 .card-container {
@@ -314,7 +336,8 @@ main h4 {
 }
 
 main p {
-  margin-bottom: 15px;;
+  margin-bottom: 15px;
+  margin-left: 15px;
 }
 
 .den {
@@ -326,13 +349,6 @@ main p {
   font-size: 90%;
 }
 
-#homehero {
-  background-image: url(hero.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 main ul {
   margin: 20px 0;
   padding-left: 20px;
@@ -342,23 +358,48 @@ main li {
   margin-bottom: 10px;
 }
 
-main div:not(.card-container):not(.card):not(.hero) {
+video {
+  margin: 15px;
+  border-radius: 4px;
+}
+
+/*.video-section {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.video-section ul {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.video-section video {
+  max-width: 320px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}*/
+
+main div:not(.card-container):not(.card):not(.hero):not(.content-row) {
   padding: 10px;
   background-color: #f0c040;
   color: #1e2a38;
   text-align: center;
   font-size: medium;
-  /*border-left: 5px solid #f0c040;*/
 }
 
 footer {
-  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
   background-color: #1e2a38;
   color: #ffffff;
   font-size: 75%;
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
-  text-align: center;
 }
 
 footer a {
@@ -370,6 +411,10 @@ footer a:hover {
   text-decoration: underline;
 }
 
+footer .den {
+  color: #f0c040;
+}
+
 /* creating a 3 column layout for the FAQ */
 .flow {
 display: flex;
@@ -378,10 +423,15 @@ flex-direction: row;
 
 /* responsive design */
 @media (max-width: 768px) {
-header {
-  flex-direction: column;
-  align-items: center;
-}
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content-row {
+    flex-direction: column;
+    gap: 20px;
+  }
 
   nav ul {
     flex-direction: column;
@@ -393,10 +443,6 @@ header {
   header h1 {
     font-size: 1.8rem;
   }
-
-  .hero {
-    height: 200px;
-  }
   
   .video-section {
     flex-direction: column;
@@ -404,6 +450,12 @@ header {
   
   .video-section video {
     max-width: 100%;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
   }
 
 }
