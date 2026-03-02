@@ -1,5 +1,4 @@
 // TAD-functions.js
-
 function validateReservation({ firstName, lastName, email, phone, sportSkill }) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phonePattern = /^\d{3}-?\d{3}-?\d{4}$/;
