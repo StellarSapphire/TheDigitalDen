@@ -3,42 +3,37 @@
   <head>
     <!--
     *  Author: Olivia Haag
-    *  Date: 11/5/24
+    *  Date: 2/27/26
     *  Assignment: Final Project - The Athlete's Den
-    *  Purpose:
+    *  Purpose: Creating a reservations.html page for the Athlete's Den website
     -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width= device-width, inital-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- linking to main stylesheet -->
-    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>The Athlete's Den :: Schedule a Lesson Today!</title>
   </head>
   <body>
-
     <div id="wrapper">
-
-      <header>
-        <!-- heading 1 always goes in the header to tell search engines what the main
-      topic of the page is -->
+    <header>
         <h1><a href="index.html">The Athlete's Den</a></h1>
-      </header>
-  
-      <nav>
-        <!-- creating links at top of page -->
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="training.html">Training</a></li>
-          <li><a href="coaches.html">Coaches</a></li>
-          <li><a href="mental.html">Mentality</a></li>
-          <li><a href="nutrition.html">Nutrition</a></li>
-          <li><a href="reservations.html">Reservations</a></li>
-        </ul>
-      </nav>
-
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="mental.html">Mentality</a></li>
+                <li><a href="nutrition.html">Nutrition</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
       <h2>Training with the Den</h2>
-      <h3>Contact Us Today!</h3>
+      <div class="reservations">
+        <h3>Contact Us Today!</h3>
+      </div>
       <p>Required fields are marked with an asterisk*</p>
       <form id="reservationForm">
         
@@ -73,21 +68,19 @@
         <!-- Submit input -->
         <input type="submit" name="submit" id="submit"></input>
       </form>
-
-      <!-- start contact area -->
-      <div id="contact">
-        <span class="resort">The Athlete's Den</span> <br />
-        210 Athlete's Street <br />
-        Buford, GA 30515 <br /><br />
-        888-555-5555 <br /><br />
-      </div>
     </main>
 
     <footer>
-      
-        Copyright &copy; 2024 The Athlete's Den <br />
+        <div>
+            <span class="den">The Athlete's Den</span> <br />
+            210 Athlete's Street <br />
+            Buford, GA 30515 <br />
+            888-555-5555 <br />
+        </div>
+        <div>
+        Copyright &copy; 2026 The Athlete's Den <br />
         <a href="mailto:o162509haag@mail.swu.edu">o162509haag@mail.swu.edu</a>
-      
+        </div>
     </footer>
   </div>
   <script src="script.js"></script>
