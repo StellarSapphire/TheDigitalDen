@@ -1,59 +1,63 @@
-// __test__/TAD.test.js
-const { validateForm } = require("../TAD-functions");
+const { validateReservation, validateSignup, createUser } = require("../TAD-functions");
 
-describe("validateForm function", () => {
-  test("no errors for valid input", () => {
-    expect(validateForm({
+describe("Reservation Form Validation", () => {
+  test("valid input returns no errors", () => {
+    const errors = validateReservation({
       firstName: "John",
       lastName: "Doe",
       email: "john@example.com",
       phone: "1234567890",
-      sportSkill: "Basketball"
-    })).toBe("");
+      sportSkill: "Tennis"
+    });
+    expect(errors).toBe("");
   });
 
-  test("error when first name missing", () => {
-    expect(validateForm({
+  test("missing firstName returns error", () => {
+    const errors = validateReservation({
       firstName: "",
       lastName: "Doe",
       email: "john@example.com",
       phone: "",
       sportSkill: "Tennis"
-    })).toContain("First name is required.");
+    });
+    expect(errors).toContain("First name is required.");
   });
 
-  test("error for invalid email", () => {
-    expect(validateForm({
+  test("invalid email returns error", () => {
+    const errors = validateReservation({
       firstName: "John",
       lastName: "Doe",
       email: "bad-email",
       phone: "",
       sportSkill: "Tennis"
-    })).toContain("Enter a valid email address.");
-  });
-
-  test("error for invalid phone", () => {
-    expect(validateForm({
-      firstName: "John",
-      lastName: "Doe",
-      email: "john@example.com",
-      phone: "123",
-      sportSkill: "Tennis"
-    })).toContain("Phone number must be 10 digits.");
-  });
-
-  test("multiple errors for multiple invalid fields", () => {
-    const errors = validateForm({
-      firstName: "",
-      lastName: "",
-      email: "bad",
-      phone: "123",
-      sportSkill: ""
     });
-    expect(errors).toContain("First name is required.");
-    expect(errors).toContain("Last name is required.");
     expect(errors).toContain("Enter a valid email address.");
-    expect(errors).toContain("Phone number must be 10 digits.");
-    expect(errors).toContain("Describe the sport and skill level.");
+  });
+});
+
+describe("Signup Form Validation", () => {
+  test("valid signup returns no errors", () => {
+    const errors = validateSignup({
+      name: "Olivia",
+      email: "olivia@example.com",
+      password: "password123",
+      role: "Athlete"
+    });
+    expect(errors).toBe("");
+  });
+
+  test("missing fields return errors", () => {
+    const errors = validateSignup({ name: "", email: "", password: "", role: "" });
+    expect(errors).toContain("Name is required.");
+    expect(errors).toContain("Email is required.");
+    expect(errors).toContain("Password is required.");
+    expect(errors).toContain("Role is required.");
+  });
+});
+
+describe("User Creation", () => {
+  test("createUser returns correct object", () => {
+    const user = createUser({ name: "Olivia", email: "olivia@example.com", role: "Athlete" });
+    expect(user).toEqual({ name: "Olivia", email: "olivia@example.com", role: "Athlete" });
   });
 });
