@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (lastName === "") errorMessage += "Last name is required.\n";
     if (!emailPattern.test(email)) errorMessage += "Enter a valid email address.\n";
     if (sportSkill === "") errorMessage += "Describe the sport and skill level.\n";
-
     if (phone !== "" && !phonePattern.test(phone)) {
       errorMessage += "Phone number must be 10 digits.\n";
     }
@@ -38,9 +37,21 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    //message upon successful submission
-    alert("Thank you! Your reservation request has been submitted.");
-    form.reset(); //resets the form
+    // AI was used to assist in the development of the following code for sending form data to the backend server
+    fetch("http://localhost:5000/reservations", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ firstName, lastName, email, phone, sportSkill })
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message); // Show success message from backend
+      form.reset(); // Clear the form
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Error submitting reservation.");
+    });
   }
 
   //function for giving real-time feedback on email input
