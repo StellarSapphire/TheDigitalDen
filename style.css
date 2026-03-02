@@ -421,6 +421,48 @@ display: flex;
 flex-direction: row;
 }
 
+/* Profile Page Styles */
+body.profile-page h2.profile-title {
+  color: #1e2a38;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  text-align: center;
+  background-color: #f0c040;
+}
+
+.profile-container {
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.profile-field {
+  margin-bottom: 15px;
+}
+
+.profile-field label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.profile-field .role {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #1e2a38;
+}
+
 /* responsive design */
 @media (max-width: 768px) {
   header {
