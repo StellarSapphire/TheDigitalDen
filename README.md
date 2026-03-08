@@ -13,3 +13,6 @@ Created reservation page and added .css, also added JS attributes
 Created login page that currently functions as the account creation page
 /*****/
 Added JS that allows form submission and redirects user to profile page with saved account information
+/*****/
+Website is running on Render
+/*****/

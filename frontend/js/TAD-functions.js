@@ -26,4 +26,13 @@ function createUser({ name, email, role }) {
   return { name, email, role };
 }
 
-module.exports = { validateReservation, validateSignup, createUser };
+function requireLogin() {
+  const userData = JSON.parse(localStorage.getItem("currentUser"));
+  if (!userData) {
+    window.location.href = "login.html"; // redirect if not logged in
+    return null;
+  }
+  return userData;
+}
+
+module.exports = { validateReservation, validateSignup, createUser, requireLogin };
