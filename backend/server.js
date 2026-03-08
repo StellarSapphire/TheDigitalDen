@@ -1,14 +1,18 @@
+// AI was utilized for the development of this code
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
 const app = express();
+
+// Use port from environment (Render) or fallback to 5000 (local)
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
-app.use(express.json());
+// Middleware
+app.use(cors());              // Allow requests from frontend
+app.use(express.json());      // Parse JSON request bodies
 
-// Serve frontend files
+// Serve frontend static files
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 // Temporary in-memory "database"
@@ -48,7 +52,8 @@ app.post("/signup", (req, res) => {
   return res.json({ message: "Account created successfully!" });
 });
 
+// ------------------------------
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
