@@ -8,25 +8,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const BASE_URL = "https://thedigitalden.onrender.com";
 
   // ------------------------------
-  // Helper: Require login for protected pages
-  function requireLogin() {
-    const userData = JSON.parse(localStorage.getItem("currentUser"));
-    if (!userData) {
-      window.location.href = "login.html"; // redirect if not logged in
-      return null;
-    }
-    return userData;
+  // Site-wide login protection
+  const currentPage = window.location.pathname.split("/").pop();
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  // Redirect to login if accessing protected page
+  const protectedPages = ["profile.html", "reservations.html", "training.html", "mental.html", "nutrition.html"];
+  if (protectedPages.includes(currentPage) && !currentUser) {
+    window.location.href = "login.html";
+    return; // stop execution
+  }
+
+  // Redirect away from login if already logged in
+  if (currentPage === "login.html" && currentUser) {
+    window.location.href = "profile.html";
+    return;
   }
 
   // ------------------------------
-  // Redirect logged-in users away from login page
-  const isLoginPage = window.location.href.includes("login.html");
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-  if (isLoginPage && currentUser) {
-    // Already logged in → go to profile
-    window.location.href = "profile.html";
-    return; // stop further execution
+  // Helper to get logged-in user
+  function requireLogin() {
+    const userData = JSON.parse(localStorage.getItem("currentUser"));
+    if (!userData) {
+      window.location.href = "login.html";
+      return null;
+    }
+    return userData;
   }
 
   // ------------------------------
@@ -35,10 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const emailInput = document.getElementById("email");
 
   if (reservationForm) {
-    const user = requireLogin(); // protect page
-    if (user && emailInput) {
-      emailInput.value = user.email; // prefill email
-    }
+    const user = requireLogin();
+    if (user && emailInput) emailInput.value = user.email;
 
     reservationForm.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -49,9 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const phone = document.getElementById("phone").value.trim();
       const sportSkill = document.querySelector("textarea[name='sportskill']").value.trim();
 
+      let errorMessage = "";
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const phonePattern = /^\d{3}-?\d{3}-?\d{4}$/;
-      let errorMessage = "";
 
       if (!firstName) errorMessage += "First name is required.\n";
       if (!lastName) errorMessage += "Last name is required.\n";
@@ -82,18 +87,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (emailInput) {
       emailInput.addEventListener("input", function () {
-        const emailValue = emailInput.value.trim();
-        if (emailValue && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
-          emailInput.style.borderColor = "red";
-        } else {
-          emailInput.style.borderColor = "";
-        }
+        emailInput.style.borderColor = (emailInput.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) ? "red" : "";
       });
     }
   }
 
   // ------------------------------
-  // Signup / login page logic
+  // Signup page logic
   const signupForm = document.getElementById("signupForm");
   if (signupForm) {
     signupForm.addEventListener("submit", function (e) {
@@ -133,20 +133,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Profile page logic
   const profileName = document.getElementById("profileName");
   if (profileName) {
-    const user = requireLogin(); // protect page
-    if (user) {
-      profileName.textContent = user.name;
-      document.getElementById("profileEmail").textContent = user.email;
-      document.getElementById("profileRole").textContent = user.role;
-
-      // Optional: Logout button
-      const logoutBtn = document.getElementById("logoutBtn");
-      if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
-          localStorage.removeItem("currentUser");
-          window.location.href = "login.html";
-        });
-      }
-    }
+    const user = requireLogin();
+    profileName.textContent = user.name;
+    document.getElementById("profileEmail").textContent = user.email;
+    document.getElementById("profileRole").textContent = user.role;
   }
 });
