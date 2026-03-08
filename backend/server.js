@@ -1,26 +1,23 @@
-// AI was utilized for the development of this code
+// server.js
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
 const app = express();
-
-// Use port from environment (Render) or fallback to 5000 (local)
 const PORT = process.env.PORT || 5000;
 
+// ------------------------------
 // Middleware
-app.use(cors());              // Allow requests from frontend
-app.use(express.json());      // Parse JSON request bodies
+app.use(cors());
+app.use(express.json());
 
-// Serve frontend static files
-app.use(express.static(path.join(__dirname, "../frontend")));
-
+// ------------------------------
 // Temporary in-memory "database"
 let users = [];
 
 // ------------------------------
-// Reservation endpoint
-app.post("/reservations", (req, res) => {
+// API routes (prefixed with /api)
+app.post("/api/reservations", (req, res) => {
   const { firstName, lastName, email, phone, sportSkill } = req.body;
 
   if (!firstName || !lastName || !email || !sportSkill) {
@@ -31,9 +28,7 @@ app.post("/reservations", (req, res) => {
   return res.json({ message: "Reservation submitted successfully!" });
 });
 
-// ------------------------------
-// Signup endpoint
-app.post("/signup", (req, res) => {
+app.post("/api/signup", (req, res) => {
   const { name, email, password, role } = req.body;
 
   if (!name || !email || !password || !role) {
@@ -50,6 +45,20 @@ app.post("/signup", (req, res) => {
 
   console.log("New user created:", newUser);
   return res.json({ message: "Account created successfully!" });
+});
+
+// ------------------------------
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+// ------------------------------
+// Frontend catch-all (SPA), ignoring API routes
+app.get(/.*/, (req, res) => {
+  if (!req.path.startsWith("/api")) {
+    res.sendFile(path.join(__dirname, "../frontend/index.html"));
+  } else {
+    res.status(404).send("Not Found");
+  }
 });
 
 // ------------------------------
