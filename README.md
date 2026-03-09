@@ -16,3 +16,6 @@ Added JS that allows form submission and redirects user to profile page with sav
 /*****/
 Website is running on Render
 /*****/
+Added coaching cards and searching capabilities to the index page
+/*****/
+Updated the .css across the whole site
