@@ -103,6 +103,10 @@ nav a:hover {
   padding-left: 20px;
 }
 
+#coaching-section {
+  padding: 30px 0;
+}
+
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -122,6 +126,16 @@ nav a:hover {
     transition: transform 0.3s ease, box-shadow 0.2s ease;
 }
 
+.card h3 {
+  color: #1e2a38;
+  margin-bottom: 8px;
+}
+
+.card p {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
 .card:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -133,7 +147,7 @@ nav a:hover {
     background-color: #fffee6;
 }
 
-#filter-buttons {
+.filter-buttons {
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -159,53 +173,15 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-#cost-calculator {
-  flex: 1 1 45%;
-  max-width: 500px;
-  /*margin: 30px auto;*/
-  padding: 20px;
-  background-color: #f0c040;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-#cost-calculator button {
-  padding: 10px 20px;
-  background-color: #1e2a38;
-  color: #ffffff;
-  border: none;
+#search-bar {
+  display: block;
+  margin: 15px auto;
+  padding: 10px 15px;
+  width: 60%;
+  max-width: 400px;
   border-radius: 25px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-#cost-calculator button:hover {
-  background-color: #2b3c51;
-}
-
-#cost-calculator input {
-  padding: 8px;
-  margin: 5px 0 10px 0;
-  width: 62%;
-  border-radius: 6px;
   border: 1px solid #ccc;
-}
-
-.result-box {
-  min-height: 36px;
-  margin-top: 15px;
-  margin-left: 125px;
-  margin-right: 125px;
-  padding: 5px;
-  background-color: #ffffff;
-  color: #1e2a38;
-  font-weight: bold;
-  border-radius: 8px;
-  text-align: center;
   font-size: 1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #user-needs {

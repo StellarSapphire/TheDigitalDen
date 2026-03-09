@@ -138,4 +138,113 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("profileEmail").textContent = user.email;
     document.getElementById("profileRole").textContent = user.role;
   }
+
+  // ------------------------------
+  // Coaching cards (homepage section)
+  const skillsContainer = document.getElementById("skills-container");
+
+  if (skillsContainer) {
+
+    let allSkills = [
+      {
+        title: "Softball Hitting",
+        category: "Softball",
+        price: 50,
+        provider: "Coach Sabrina",
+        description: "Improve hitting technique and power."
+      },
+      {
+        title: "Softball Pitching",
+        category: "Softball",
+        price: 70,
+        provider: "Coach Adrienne",
+        description: "Advanced pitching mechanics and fluid-dynamics."
+      },
+      {
+        title: "Strength Training",
+        category: "Strength",
+        price: 50,
+        provider: "Coach Jordan",
+        description: "Build power and explosiveness for athletes."
+      },
+      {
+        title: "Baseball Fielding",
+        category: "Baseball",
+        price: 30,
+        provider: "Coach Joe",
+        description: "Fielding mechanics and techniques."
+      },
+      {
+        title: "Speed & Agility",
+        category: "Strength",
+        price: 30,
+        provider: "Coach Jordan",
+        description: "Practice your footwork with conditioning and endurance training."
+      },
+      {
+        title: "Shooting Form",
+        category: "Basketball",
+        price: 30,
+        provider: "Coach Sierra",
+        description: "Improve your shooting technique and form."
+      }
+    ];
+
+    function displaySkills(skills) {
+      skillsContainer.innerHTML = "";
+
+      skills.forEach(skill => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+          <h3>${skill.title}</h3>
+          <p><strong>Category:</strong> ${skill.category}</p>
+          <p><strong>Coach:</strong> ${skill.provider}</p>
+          <p>${skill.description}</p>
+          <p><strong>Price:</strong> $${skill.price}/session</p>
+        `;
+
+        skillsContainer.appendChild(card);
+      });
+    }
+
+    displaySkills(allSkills);
+
+    // ------------------------------
+    // Category filter buttons
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", function () {
+        const category = this.dataset.category;
+
+        if (category === "All") {
+          displaySkills(allSkills);
+        } else {
+          const filtered = allSkills.filter(skill => skill.category === category);
+          displaySkills(filtered);
+        }
+      });
+    });
+
+    // ------------------------------
+    // Search bar filter
+    const searchBar = document.getElementById("search-bar");
+
+    if (searchBar) {
+      searchBar.addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+
+        const filtered = allSkills.filter(skill =>
+          skill.title.toLowerCase().includes(query) ||
+          skill.category.toLowerCase().includes(query) ||
+          skill.provider.toLowerCase().includes(query)
+        );
+
+        displaySkills(filtered);
+      });
+    }
+  }
+
 });
